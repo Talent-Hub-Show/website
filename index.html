@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TalentHub — Showcase & Discover Talent</title>
 
-    <!-- Tailwind (single include) -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome -->
@@ -21,13 +21,13 @@
     />
 
     <style>
-      /* Ensure swiper slides cover the hero */
       .bg-swiper {
         position: absolute;
         inset: 0;
-        z-index: 0; /* behind the white card (z-10) */
+        z-index: 0;
         height: 100%;
       }
+
       .bg-swiper .swiper-slide {
         width: 100%;
         height: 100%;
@@ -36,291 +36,614 @@
         background-repeat: no-repeat;
       }
 
-      /* Optional: smoother content fade */
-      #heroContent { transition: opacity 0.35s ease; }
+      #heroContent {
+        transition: opacity 0.35s ease;
+      }
     </style>
   </head>
 
-  <body class="bg-[#FFFFFF] font-sans antialiased">
-    <!-- NAVBAR (unchanged) -->
-    <header class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 flex items-center justify-center font-extrabold text-slate-900">
+  <body class="bg-white font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header class="md:max-w-7xl max-w-full md:mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4 bg-white">
+      <!-- Mobile Logo -->
+      <a href="#" class="flex items-center md:hidden lg:flex gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-300 flex items-center justify-center font-extrabold text-slate-900">
           TH
         </div>
-        <div>
-          <div class="font-extrabold text-lg">TalentHub</div>
-        </div>
+        <div class="font-extrabold text-lg text-slate-900">TalentHub</div>
       </a>
 
-      <nav class="hidden md:flex gap-14 text-grey-600 font-medium">
-        <a href="#features" class="hover:text-white">Platforms</a>
-        <a href="#showcase" class="hover:text-white">Solutions</a>
-        <a href="#how" class="hover:text-white">Resources</a>
-        <a href="#contact" class="hover:text-white">Company</a>
-        <a href="#contact" class="hover:text-white">Customers</a>
+      <!-- Mobile menu -->
+      <button
+        class="md:hidden text-2xl text-gray-800"
+        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex gap-10 text-gray-700 font-medium">
+        <a href="#features" class="hover:text-black transition-colors">Platforms</a>
+        <a href="#showcase" class="hover:text-black transition-colors">Solutions</a>
+        <a href="#how" class="hover:text-black transition-colors">Resources</a>
+        <a href="#contact" class="hover:text-black transition-colors">Company</a>
+        <a href="#contact" class="hover:text-black transition-colors">Customers</a>
       </nav>
 
-      <div class="flex items-center gap-5">
+      <!-- Tablet Nav (768px–1023px) -->
+      <div class="hidden md:flex lg:hidden md:px-0 md:py-0 w-full flex-col px-6 py-4">
+        <!-- Top Row -->
+        <div class="w-full flex items-center justify-between">
+          <!-- Brand -->
+          <a href="#" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-300 flex items-center justify-center font-extrabold text-slate-900">
+              TH
+            </div>
+            <div class="font-extrabold text-lg text-slate-900 leading-none">TalentHub</div>
+          </a>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-4">
+            <button class="px-4 py-2 font-bold text-black">Log in</button>
+            <button class="bg-green-600 px-4 py-2 flex items-center gap-2 rounded-lg font-bold text-white shadow-md">
+              Request Demo <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="mt-6 mb-2 w-full">
+          <nav class="flex justify-center gap-10 text-gray-700 font-medium">
+            <a href="#features" class="hover:text-black transition-colors">Platforms</a>
+            <a href="#showcase" class="hover:text-black transition-colors">Solutions</a>
+            <a href="#how" class="hover:text-black transition-colors">Resources</a>
+            <a href="#contact" class="hover:text-black transition-colors">Company</a>
+            <a href="#contact" class="hover:text-black transition-colors">Customers</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Desktop Right Side Buttons -->
+      <div class="hidden lg:flex items-center gap-4">
         <button class="px-4 py-2 font-bold text-black">Log in</button>
-        <button class="bg-green-600 px-4 py-2 flex items-center gap-3 rounded-lg font-bold text-white shadow-md">
+        <button class="bg-green-600 px-4 py-2 flex items-center gap-2 rounded-lg font-bold text-white shadow-md">
           Request Demo <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
+
+      <!-- Mobile Menu Drawer -->
+      <div id="mobileMenu" class="hidden w-full md:hidden flex-col items-start mt-4 space-y-3">
+        <a href="#features" class="block w-full text-gray-700 font-medium">Platforms</a>
+        <a href="#showcase" class="block w-full text-gray-700 font-medium">Solutions</a>
+        <a href="#how" class="block w-full text-gray-700 font-medium">Resources</a>
+        <a href="#contact" class="block w-full text-gray-700 font-medium">Company</a>
+        <a href="#contact" class="block w-full text-gray-700 font-medium">Customers</a>
+
+        <div class="flex flex-col gap-2 w-full mt-4">
+          <button class="px-4 py-2 font-bold text-black text-left">Log in</button>
+          <button class="bg-green-600 px-4 py-2 rounded-lg font-bold text-white shadow-md w-full text-left">
+            Request Demo
+          </button>
+        </div>
+      </div>
     </header>
 
+
     <!-- HERO -->
-    <section id="heroSection" class="w-full px-6 py-4 grid md:grid-cols-2 gap-12 h-[95vh] relative items-center overflow-hidden">
-      <!-- Swiper background (slides created by JS) -->
+    <section id="heroSection" class="w-full p-4 md:py-6 grid md:grid-cols-2 gap-8 h-[95vh] md:min-h-[90vh] lg:min-h-[90vh] relative items-center overflow-hidden" >
+      <!-- Swiper background -->
       <div class="bg-swiper swiper">
         <div class="swiper-wrapper">
-          <!-- Slides appended via JS -->
+          <!-- Slides created dynamically -->
         </div>
       </div>
 
-      <!-- White card content sits on top -->
-      <article class="mx-auto w-[70%] z-10 relative">
-        <div class="bg-white rounded-md p-4 w-[600px] h-[90vh]">
-          <!-- Buttons -->
-          <div class="bg-[#DFF3F7] rounded-md p-2 w-full h-[60px] flex gap-2 items-center">
-            <button data-id="0" class="tab-btn bg-white rounded-md px-4 py-2 text-[14px] text-black font-bold shadow-lg">Platform</button>
-            <button data-id="1" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[14px] font-bold">Screen</button>
-            <button data-id="2" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[14px] font-bold">Interview</button>
-            <button data-id="3" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[14px] font-bold">Scheduled</button>
-            <button data-id="4" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[14px] font-bold">Structure</button>
-            <button data-id="5" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[14px] font-bold">Intelligence</button>
+      <!-- Card -->
+      <article class="z-10 relative flex justify-center w-full">
+        <div class="bg-white rounded-xl md:p-4 px-2 sm:w-[90%] lg:w-[610px] md:w-[100%] min-h-[60vh] md:min-h-[50vh] sm:min-h-[70vh] flex flex-col justify-between shadow-lg" >
+          <!-- Tabs -->
+          <div class="bg-[#DFF3F7] rounded-md p-2 flex flex-wrap gap-2 items-center justify-center sm:justify-start" >
+            <button data-id="0" class="tab-btn bg-white rounded-md px-3 py-2 text-[13px] sm:text-[14px] text-black font-bold shadow" > Platform </button>
+            <button data-id="1" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Screen </button>
+            <button data-id="2" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Interview </button>
+            <button data-id="3" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Scheduled </button>
+            <button data-id="4" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Structure </button>
+            <button data-id="5" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Intelligence </button>
           </div>
 
           <!-- Content -->
-          <div>
-            <div id="heroContent" class="py-5">
-              <h3 class="uppercase py-3 text-[20px] font-bold text-[#471E7E]" id="subTitle">Interview Management System</h3>
-              <h1 class="text-[58px] py-6 font-[700] text-black leading-tight" id="mainTitle">The Next Generation of Interviewing</h1>
-              <p class="text-[18px] pb-6 text-gray-700" id="desc">Plan Conduct analyze and optimize your interview process with AI-powered tools.</p>
-            </div>
+          <div id="heroContent" class="py-6 text-center sm:text-left">
+            <h3 class="uppercase py-2 text-[16px] sm:text-[17px] lg:text-[20px] font-bold text-[#471E7E]" id="subTitle" >
+              Interview Management System
+            </h3>
+            <h1 class="text-[34px] sm:text-[48px] md:text-[40px] lg:text-[58px] py-4 font-bold text-black leading-tight" id="mainTitle" >
+              The Next Generation of Interviewing
+            </h1>
+            <p class="text-[15px] sm:text-[18px] text-gray-700 max-w-md mx-auto sm:mx-0" id="desc" >
+              Plan, conduct, analyze, and optimize your interview process with
+              AI-powered tools.
+            </p>
+          </div>
 
-            <div class="flex gap-4 my-6">
-              <button class="bg-green-600 px-4 py-3 flex items-center gap-3 rounded-lg font-bold text-white shadow-md">
-                Request Demo <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <button class="bg-transparent border-slate-400 border-2 px-4 py-3 flex items-center gap-3 rounded-lg font-bold text-black shadow-md">
-                <i class="fa-regular fa-circle-play"></i> Watch 2-Minute Video
-              </button>
-            </div>
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start m-0" >
+            <button class="bg-green-600 px-4 py-3 flex items-center justify-center gap-3 rounded-lg font-bold text-white shadow-md" >
+              Request Demo <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="bg-transparent border-slate-400 border-2 px-4 py-3 flex items-center justify-center gap-3 rounded-lg font-bold text-black shadow-md" >
+              <i class="fa-regular fa-circle-play"></i> Watch 2-Minute Video
+            </button>
+          </div>
 
-            <div class="flex justify-between w-full px-9 gap-5 mt-10">
-              <div class="flex flex-col w-fit">
-                <img src="/website/assets/Icons/star-review.svg" alt="star-review">
-                <h6 class="text-center">G2 Reviews</h6>
-              </div>
-              <div class="flex flex-col w-fit">
-                <img src="/website/assets/Icons/star-review.svg" alt="star-review">
-                <h6 class="text-center">G2 Reviews</h6>
-              </div>
-              <div class="flex flex-col w-fit">
-                <img src="/website/assets/Icons/star-review.svg" alt="star-review">
-                <h6 class="text-center">G2 Reviews</h6>
-              </div>
-              <div class="flex flex-col w-fit">
-                <img src="/website/assets/Icons/star-review.svg" alt="star-review">
-                <h6 class="text-center">G2 Reviews</h6>
-              </div>
+          <!-- Logos -->
+          <div
+            class="flex justify-center w-full  gap-x-16 my-3 mt-5 md:gap-x-5"
+          >
+            <div class="flex flex-col items-center">
+              <img src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
+              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
+            </div>
+            <div class="flex flex-col items-center">
+              <img src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
+              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
+              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
+            </div>
+            <div class="flex flex-col items-center">
+              <img
+                src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
+              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
             </div>
           </div>
         </div>
       </article>
     </section>
 
-    <section class="py-9 w-full bg-[#F8F8F8]">
-      <div class="w-[80%] mx-auto">
-        <h2 class="py-3 text-[36px] w-[60%] mx-auto text-center font-semibold text-[#161616]">Real Hiring Real Impact</h2>
-        <p class="py-4 w-[70%] text-gray-800 text-center mx-auto text-[18px]">TalentHub's interview intelligence platform is transforming recruitment efficiency with its powerful AI. Our tool has helped clients save 30% of recruitment hours </p>
-        <div class=" flex justify-evenly">
-          <div class="flex flex-col gap-4">
-            <h2 class="text-[#0D0517] font-bold  text-[60px] leading-normal">30<span class="text-[#16A34A]">%</span></h2>
-            <p class="font-medium text-[20px] text-center">
+    
+    <section class="py-12 w-full bg-[#F8F8F8]">
+      <div class="w-[90%] md:w-[85%] lg:w-[80%] mx-auto text-center">
+        
+        <!-- Heading -->
+        <h2 class="py-3 text-[28px] sm:text-[32px] lg:text-[36px] font-semibold text-[#161616] leading-snug">
+          Real Hiring Real Impact
+        </h2>
+    
+        <!-- Subtitle -->
+        <p class="py-4 text-gray-800 text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed w-[95%] sm:w-[80%] lg:w-[70%] mx-auto">
+          TalentHub's interview intelligence platform is transforming recruitment efficiency with its powerful AI.
+          Our tool has helped clients save 30% of recruitment hours.
+        </p>
+    
+        <!-- Stats Grid -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 lg:gap-10 justify-items-center">
+          
+          <!-- 1 -->
+          <div class="flex flex-col gap-2 sm:gap-3">
+            <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
+              30<span class="text-[#16A34A]">%</span>
+            </h2>
+            <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Less <br> Time-to-hire
             </p>
           </div>
-          <div class="flex flex-col gap-4">
-            <h2 class="text-[#0D0517] font-bold  text-[60px] leading-normal">75<span class="text-[#16A34A]">min</span></h2>
-            <p class="font-medium text-[20px] text-center">
+    
+          <!-- 2 -->
+          <div class="flex flex-col gap-2 sm:gap-3">
+            <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
+              75<span class="text-[#16A34A]">min</span>
+            </h2>
+            <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Saved <br> per screen
             </p>
           </div>
-          <div class="flex flex-col gap-4">
-            <h2 class="text-[#0D0517] font-bold  text-[60px] leading-normal">$4<span class="text-[#16A34A]">k+</span></h2>
-            <p class="font-medium text-[20px] text-center">
+    
+          <!-- 3 -->
+          <div class="flex flex-col gap-2 sm:gap-3">
+            <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
+              $4<span class="text-[#16A34A]">k+</span>
+            </h2>
+            <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Savings <br> per hire
             </p>
           </div>
-          <div class="flex flex-col gap-4">
-            <h2 class="text-[#0D0517] font-bold  text-[60px] leading-normal">17<span class="text-[#16A34A]">%</span></h2>
-            <p class="font-medium text-[20px] text-center">
+    
+          <!-- 4 -->
+          <div class="flex flex-col gap-2 sm:gap-3">
+            <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
+              17<span class="text-[#16A34A]">%</span>
+            </h2>
+            <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Faster <br> offer rollouts
             </p>
           </div>
+    
         </div>
-      </div>
-    </section>
-
-
-    <section class="w-full py-9 pb-[30rem] bg-[#F5FEF7]">
-      <div class="w-[80%] mx-auto relative">
-        <div class="max-w-[440px]">
-          <h2 class="py-3 text-[36px] font-semibold text-[#161616]">How Hiring looks like without TalentHub's</h2>
-          <p class="py-4 text-gray-800  text-[18px]">Hiring the right candidate is vital, BarRaiser exceptional hiring tools can help you find the perfect recruit.          </p>
-        </div>
-        <img src="/website/assets/Problems.webp" alt="Problems" class="absolute top-0 right-0">
-      </div>
-    </section>
-
-    <section class="w-full py-9 bg-[#F8F8F8] pb-[100px]">
-      <div class="w-[80%] mx-auto">
-        <h2 class="py-3 text-[36px] text-[#161616] text-center font-medium">Validate <span class="text-[#16A34A]">skills</span> throughout the hiring process</h2>
-        <div class="flex justify-center gap-3">
-          <li class="flex gap-3 items-center">
-            <i class="fa-solid fa-magnifying-glass" style="color: #471e7e;"></i>
-            <span class="text-[14px] uppercase text-[#2b2d37] font-medium">SKILLS VALIDATION</span>
-          </li>
-          <li class="flex gap-3 items-center">
-            <i class="fa-light fa-video" style="color: #471e7e;"></i>
-            <span class="text-[14px] uppercase text-[#2b2d37] font-medium">INTELLIGENT INTERVIEWING</span>
-          </li>
-          <li class="flex gap-3 items-center">
-            <i class="fa-light fa-message" style="color: #471e7e;"></i>
-            <span class="text-[14px] uppercase text-[#2b2d37] font-medium">TALENT ENGAGEMENT</span>
-          </li>
-          <li class="flex gap-3 items-center">
-            <i class="fa-light fa-calendar-days" style="color: #471e7e;"></i>
-            <span class="text-[14px] uppercase text-[#2b2d37] font-medium">WORKFLOW AUTOMATION</span>
-          </li>
-        </div>
-
-      <div class="flex gap-10 mt-36 items-start">
-            <!-- LEFT CONTENT -->
-        <div class="w-1/2 space-y-60">
-
-          <div class="content-block" data-img="/website/assets/Valide%20Skills/Img1.webp">
-            <h4 class="uppercase text-[16px] text-[#6064df] leading-5">SKILLS VALIDATION </h4>
-            <h3 class="text-[30px] font-normal my-2  text-[#2b2d37]">Validate role-specific skills.</h3>
-            <p class="text-[23px] max-w-[450px] font-medium text-[#566068] my-[15px]">Simplify hiring, reduce bias, and future-proof your hiring with Virtual Job Tryouts and AI-powered assessments. </p>
-            <button class="text-[17px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">Learn More <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z" fill="currentColor"></path>
-            </svg></button>
-          </div>
-
-          <div class="content-block" data-img="/website/assets/Valide%20Skills/Img2.webp">
-            <h4 class="uppercase text-[16px] text-[#6064df] leading-5">INTELLIGENT INTERVIEWING </h4>
-            <h3 class="text-[30px] font-normal my-2  text-[#2b2d37]">Interview smarter, hire better</h3>
-            <p class="text-[23px] max-w-[450px] font-medium text-[#566068] my-[15px]">Make hiring easier with data-driven tools. Tailor interviews in minutes and let candidates self-schedule seamlessly.</p>
-            <button class="text-[17px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">Learn More <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z" fill="currentColor"></path>
-            </svg></button>
-          </div>
-
-          <div class="content-block" data-img="/website/assets/Valide%20Skills/Img3.webp">
-            <h4 class="uppercase text-[16px] text-[#6064df] leading-5">Talent ENGAGEMENT</h4>
-              <h3 class="text-[30px] font-normal my-2  text-[#2b2d37]">Engage talent 24/7. </h3>
-              <p class="text-[23px] max-w-[450px] font-medium text-[#566068] my-[15px]">Accelerate offers with 24/7 AI-driven engagement. Quickly match talent to the right roles and keep hiring on track. </p>
-              <button class="text-[17px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">Learn More <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z" fill="currentColor"></path>
-              </svg></button>
-          </div>
-
-          <div class="content-block" data-img="/website/assets/Valide%20Skills/Img4.webp">
-            <h4 class="uppercase text-[16px] text-[#6064df] leading-5">WORKFLOW AUTOMATION </h4>
-              <h3 class="text-[30px] font-normal my-2  text-[#2b2d37]">Match talent to opportunity. </h3>
-              <p class="text-[23px] max-w-[450px] font-medium text-[#566068] my-[15px]">Keep your talent pool moving through the funnel with self-scheduling automation. </p>
-              <button class="text-[17px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">Learn More <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z" fill="currentColor"></path>
-              </svg></button>
-          </div>
-      </div>
-
-        <!-- RIGHT IMAGE PANEL (single img element!) -->
-      <div class="w-1/2 sticky top-20 h-[500px] flex justify-center">
-        <div class="relative w-full h-[420px] rounded-xl overflow-hidden">
-          <img
-            id="feature-img"
-            src="/website/assets/Valide%20Skills/Img1.webp"
-            alt="feature"
-            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
-            />
-        </div>
-      </div>
-      </div>
       </div>
     </section>
     
 
-    <section class="w-full py-9">
-      <div class="w-[80%] mx-auto">
-        <div class="flex flex-col items-center justify-center gap-10">
-          <div class="mx-auto grid grid-cols-1 overflow-hidden rounded-2xl shadow-lg md:grid-cols-2 lg:grid-cols-3">
-            <div class="col-span-1 h-full md:col-span-2 lg:col-span-1 lg:max-h-none">
-              <img src="/website/assets/Icons/InterviewProducts/fashion-portrait-young-girl-working-cafe-terrace-sunny-day.jpg" loading="lazy" width="816" height="1028" class="object-cover object-left h-full max-lg:hidden" alt="Products illustration">
+
+    <section class="w-full py-12 bg-[#F5FEF7] relative overflow-hidden">
+      <div class="w-[90%] sm:w-[85%] lg:w-[80%] mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 relative">
+        
+        <!-- Text Content -->
+        <div class="max-w-full md:max-w-[320px] lg:max-w-[440px] text-center md:text-left">
+          <h2 class="py-3 text-[26px] sm:text-[30px] lg:text-[36px] font-semibold text-[#161616] leading-snug">
+            How Hiring looks like <br class="hidden sm:block"> without TalentHub's
+          </h2>
+          <p class="py-4 text-gray-800 text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed">
+            Hiring the right candidate is vital, and BarRaiser's exceptional hiring tools can help you find the perfect recruit.
+          </p>
+        </div>
+    
+        <!-- Image -->
+        <div class="w-full md:w-[100%] lg:w-[80%] flex justify-center md:justify-end">
+          <img 
+            src="/website/assets/Problems.webp" 
+            alt="Problems" 
+            class="w-[100%] sm:w-full md:w-full h-auto object-contain"
+          />
+        </div>
+    
+      </div>
+    </section>
+    
+
+    <section class="w-full py-12 bg-[#F8F8F8]">
+      <div class="w-[90%] sm:w-[85%] lg:w-[80%] mx-auto">
+        <!-- Heading -->
+        <h2 class="py-3 text-[26px] sm:text-[30px] lg:text-[36px] text-[#161616] text-center font-medium leading-snug">
+          Validate <span class="text-[#16A34A]">skills</span> throughout the hiring process
+        </h2>
+    
+        <!-- Icon Row -->
+        <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
+          <li class="flex gap-2 sm:gap-3 items-center">
+            <i class="fa-solid fa-magnifying-glass text-[#471e7e] text-lg"></i>
+            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">SKILLS VALIDATION</span>
+          </li>
+          <li class="flex gap-2 sm:gap-3 items-center">
+            <i class="fa-light fa-video text-[#471e7e] text-lg"></i>
+            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">INTELLIGENT INTERVIEWING</span>
+          </li>
+          <li class="flex gap-2 sm:gap-3 items-center">
+            <i class="fa-light fa-message text-[#471e7e] text-lg"></i>
+            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">TALENT ENGAGEMENT</span>
+          </li>
+          <li class="flex gap-2 sm:gap-3 items-center">
+            <i class="fa-light fa-calendar-days text-[#471e7e] text-lg"></i>
+            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">WORKFLOW AUTOMATION</span>
+          </li>
+        </ul>
+    
+        <!-- Main Content -->
+        <div class="flex flex-col-reverse lg:flex-row gap-10 mt-16 lg:mt-36 items-start">
+          <!-- Left Content -->
+          <div class="w-full lg:w-1/2 space-y-20 sm:space-y-32 lg:space-y-60">
+            <!-- Content Block 1 -->
+            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img1.webp">
+              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">SKILLS VALIDATION</h4>
+              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
+                Validate role-specific skills.
+              </h3>
+              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
+                Simplify hiring, reduce bias, and future-proof your hiring with Virtual Job Tryouts and AI-powered assessments.
+              </p>
+              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
+                Learn More
+                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </button>
             </div>
-            <div class="flex flex-col gap-5 border border-gray-200 p-10 pl-8 pr-4 max-xl:p-8 max-xl:pr-4 max-sm:p-6 md:rounded-bl-2xl lg:rounded-none">
-              <h3 class="text-3xl font-bold leading-tight text-grey-900 max-sm:text-2xl max-sm:leading-tight pt-8 max-xl:text-2xl ">Interviewing Products</h3>
-              <p class="text-secondary text-lg">Plan, conduct, and optimize interview processes without the heavy lifting.</p>
-              <ul class="flex flex-col gap-2 pb-8 max-lg:pb-4">
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/play-button.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon"> Pre-Recorded Video Interviews </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+            <!-- Content Block 2 -->
+            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img2.webp">
+              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">INTELLIGENT INTERVIEWING</h4>
+              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
+                Smart interviews made simple.
+              </h3>
+              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
+                Conduct structured interviews powered by AI insights to identify the best fit faster.
+              </p>
+              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
+                Learn More
+                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
+              </button>
+            </div>
+    
+            <!-- Content Block 3 -->
+            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img3.webp">
+              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">TALENT ENGAGEMENT</h4>
+              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
+                Engage top talent at every step.
+              </h3>
+              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
+                Keep candidates informed, connected, and motivated through automated touchpoints.
+              </p>
+              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
+                Learn More
+                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
+              </button>
+            </div>
+    
+            <!-- Content Block 4 -->
+            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img4.webp">
+              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">WORKFLOW AUTOMATION</h4>
+              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
+                Automate hiring workflows.
+              </h3>
+              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
+                Eliminate repetitive tasks and speed up hiring through seamless process automation.
+              </p>
+              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
+                Learn More
+                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
+              </button>
+            </div>
+          </div>
+    
+          <!-- Right Image Panel -->
+          <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mb-10 lg:mb-0">
+            <div class="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-full h-[280px] sm:h-[360px] md:h-[420px] rounded-xl overflow-hidden">
+              <img
+                id="feature-img"
+                src="/website/assets/Valide%20Skills/Img1.webp"
+                alt="feature"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="w-full py-12 bg-white">
+      <div class="w-[90%] md:w-[85%] lg:w-[80%] mx-auto">
+        <div class="flex flex-col items-center justify-center gap-10">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden rounded-2xl shadow-lg border border-gray-200"
+          >
+            <!-- Left Image -->
+            <div
+              class="col-span-1 md:col-span-2 lg:col-span-1 h-[240px] sm:h-[320px] md:h-full"
+            >
+              <img
+                src="/website/assets/Icons/InterviewProducts/fashion-portrait-young-girl-working-cafe-terrace-sunny-day.jpg"
+                alt="Products illustration"
+                loading="lazy"
+                class="object-cover object-center w-full h-full rounded-t-2xl md:rounded-none md:rounded-l-2xl"
+              />
+            </div>
+    
+            <!-- Interviewing Products -->
+            <div
+              class="flex flex-col gap-5 border-t md:border-t-0 border-gray-200 p-6 sm:p-8 md:p-10 lg:p-12 md:rounded-bl-2xl lg:rounded-none"
+            >
+              <h3
+                class="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 pt-4"
+              >
+                Interviewing Products
+              </h3>
+              <p class="text-gray-600 text-base sm:text-lg">
+                Plan, conduct, and optimize interview processes without the heavy
+                lifting.
+              </p>
+    
+              <ul class="flex flex-col gap-3 pb-6">
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/play-button.png"
+                      width="22"
+                      height="22"
+                      loading="lazy"
+                      alt="Play"
+                    />
+                    Pre-Recorded Video Interviews
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/video.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon"> Live Video Interviews </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/video.png"
+                      width="22"
+                      height="22"
+                      alt="Video"
+                    />
+                    Live Video Interviews
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/calendar.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon">  Interview Scheduling Software  </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/calendar.png"
+                      width="22"
+                      height="22"
+                      alt="Calendar"
+                    />
+                    Interview Scheduling Software
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/user.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon"> Structured Interviews  </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/user.png"
+                      width="22"
+                      height="22"
+                      alt="User"
+                    />
+                    Structured Interviews
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/group.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon">  Digital In-Person Interviews </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/group.png"
+                      width="22"
+                      height="22"
+                      alt="Group"
+                    />
+                    Digital In-Person Interviews
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <a href="#" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    <img src="/website/assets/Icons/InterviewProducts/save-time.png" loading="lazy" class="2sm:mr-2" width="24" height="24" alt="Play icon"> Interview Management System </a>
-                  <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/save-time.png"
+                      width="22"
+                      height="22"
+                      alt="Save"
+                    />
+                    Interview Management System
+                  </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
               </ul>
             </div>
-            <div class="flex flex-col gap-5 border border-gray-200 p-10 pl-8 pr-4 max-xl:p-8 max-xl:pr-4 max-lg:rounded-br-2xl max-md:rounded-b-2xl max-sm:p-6 lg:rounded-r-2xl">
-              <h3 class="text-3xl font-bold leading-tight text-grey-900 max-sm:text-2xl max-sm:leading-tight pt-8 max-xl:text-2xl ">Hiring Products</h3>
-              <p class="text-secondary text-lg">Attract, identify, and secure strong candidates with enterprise-level tools.</p>
-              <ul class="flex flex-col gap-2 pb-8 max-lg:pb-4">
-                <li class="flex gap-4">
-                  <img src="/website/assets/Icons/InterviewProducts/profile.png" loading="lazy" width="40" height="24" alt="References icon">
-                  <a class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight" href="#">
-                    Automated Reference Checks 
-                    <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+            <!-- Hiring Products -->
+            <div
+              class="flex flex-col gap-5 border-t md:border-l border-gray-200 p-6 sm:p-8 md:p-10 lg:p-12 md:rounded-br-2xl lg:rounded-r-2xl"
+            >
+              <h3
+                class="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 pt-4"
+              >
+                Hiring Products
+              </h3>
+              <p class="text-gray-600 text-base sm:text-lg">
+                Attract, identify, and secure strong candidates with
+                enterprise-level tools.
+              </p>
+    
+              <ul class="flex flex-col gap-3 pb-6">
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/profile.png"
+                      width="26"
+                      height="26"
+                      alt="Profile"
+                    />
+                    Automated Reference Checks
                   </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <img src="/website/assets/Icons/InterviewProducts/user-avatar.png" loading="lazy" width="30" height="24" alt="References icon">
-                  <a href="" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    Skills Testing 
-                    <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/user-avatar.png"
+                      width="26"
+                      height="26"
+                      alt="Avatar"
+                    />
+                    Skills Testing
                   </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
-                <li class="flex gap-4">
-                  <img src="/website/assets/Icons/InterviewProducts/online-meeting.png" loading="lazy" width="24" height="24" alt="References icon">
-                  <a href="" class="hover:text-grape-800 flex w-fit items-center gap-2 py-2 text-base font-bold leading-tight">
-                    Video Proctoring 
-                    <img src="/website/assets/Icons/InterviewProducts/arrow-right.svg" loading="lazy" class="inline" width="21" height="20" alt="Right Arrow Icon">
+    
+                <li class="flex items-center justify-between gap-3">
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
+                  >
+                    <img
+                      src="/website/assets/Icons/InterviewProducts/online-meeting.png"
+                      width="26"
+                      height="26"
+                      alt="Meeting"
+                    />
+                    Video Proctoring
                   </a>
+                  <img
+                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
+                    width="18"
+                    height="18"
+                    alt="arrow"
+                  />
                 </li>
               </ul>
             </div>
@@ -328,22 +651,42 @@
         </div>
       </div>
     </section>
+    
+    
 
-    <section class="w-full py-16 overflow-hidden">
-      <div class="w-[80%] mx-auto">
-        <div class="flex items-center h-[400px] relative justify-between">
-          <div class="h-full">
-            <img src="/website/assets/Icons/Quality Hiring/Bg 1.png" alt="Bg1" class="absolute top-0 z-10" width="500">
-            <img src="/website/assets/Icons/Quality Hiring/Lady.png" alt="Lady" class="absolute top-0 z-30" width="500" height="600">
+    <section class="w-full py-16 pb-0 overflow-hidden bg-white">
+      <div class="w-[90%] md:w-[80%] mx-auto">
+        <div class="flex flex-col-reverse lg:flex-row items-center justify-between relative gap-10">
+          
+          <!-- Left Image Section -->
+          <div class="relative flex justify-center lg:justify-start w-full lg:w-1/2">
+            <img 
+              src="/website/assets/Icons/Quality Hiring/Bg 1.png" 
+              alt="Bg1" 
+              class="absolute top-0 left-[17%] md:left-[17%] lg:left-0 z-10 w-[280px] sm:w-[400px] md:w-[450px] lg:w-[500px]" 
+            />
+            <img 
+              src="/website/assets/Icons/Quality Hiring/Lady.png" 
+              alt="Lady" 
+              class="relative z-30 w-[250px] sm:w-[400px] md:w-[450px] lg:w-[500px]" 
+            />
           </div>
-          <div class="max-w-[600px]">
-            <h2 class="text-5xl font-bold leading-tight text-grey-900 max-sm:text-2xl max-sm:leading-tight pt-8 max-xl:text-2xl ">Quality Hiring Starts Here</h2>
-            <p class="py-4 text-gray-800  text-[18px]">No matter where you are on your journey to building a better hiring process, Spark Hire's team of experts is here to help! </p>
-            <div class="flex items-center gap-3">
-              <button class="bg-transparent border-2 border-black px-4 py-3 flex items-center gap-3 rounded-lg font-bold text-black shadow-md">
+    
+          <!-- Right Text Content -->
+          <div class="text-center lg:text-left w-full lg:w-1/2">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#161616]">
+              Quality Hiring Starts Here
+            </h2>
+            <p class="py-4 text-gray-800 text-base sm:text-lg md:text-xl">
+              No matter where you are on your journey to building a better hiring process, 
+              Spark Hire's team of experts is here to help!
+            </p>
+    
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-4">
+              <button class="bg-transparent border-2 border-black px-6 py-3 rounded-lg font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md w-full sm:w-auto">
                 Explore Plans
               </button>
-              <button class="bg-green-600 px-4 py-3 flex items-center gap-3 rounded-lg font-bold text-white shadow-md">
+              <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
                 Talk to an Expert
               </button>
             </div>
@@ -351,54 +694,75 @@
         </div>
       </div>
     </section>
+    
 
-    <footer class="w-[100%] bg-[#272727] p-11 flex">
-      <div class="w-[90%] flex gap-6">
-        <h3 class="text-white uppercase text-[34px] font-semibold">Talent's Hub</h3>
-        <div class="flex w-[40%] gap-32">
-          <ul class="flex flex-col">
-            <li> <h3 class="uppercase font-bold text-white">Company</h3> </li>
-            <li class="py-4 pt-2"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Asssesment Library</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Pricing</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Request Demo</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Asssesment Validity</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Talent Hubs API</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Compare Talent's Hub</h5> </li>
-          </ul>
-          <ul class="flex flex-col ">
-            <li> <h3 class="uppercase font-bold text-white">Company</h3> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">About</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Blog</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Carerrs</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Diversity</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Contact Us</h5> </li>
-          </ul>
+    <footer class="w-full bg-[#272727] px-6 py-12">
+      <div class="w-[90%] mx-auto flex flex-col lg:flex-row justify-between gap-10">
+    
+        <!-- Left Main Section -->
+        <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 w-full lg:w-[85%]">
           
+          <!-- Brand -->
+          <div class="flex-shrink-0 text-center lg:text-left">
+            <h3 class="text-white uppercase text-3xl sm:text-[34px] font-semibold mb-4">
+              Talent's Hub
+            </h3>
+          </div>
+    
+          <!-- Footer Links Group 1 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 w-full lg:w-[50%]">
+            <ul class="flex flex-col">
+              <li><h3 class="uppercase font-bold text-white">Company</h3></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Assessment Library</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Pricing</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Request Demo</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Assessment Validity</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Talent Hubs API</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Compare Talent's Hub</h5></li>
+            </ul>
+    
+            <ul class="flex flex-col">
+              <li><h3 class="uppercase font-bold text-white">Company</h3></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">About</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Blog</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Careers</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Diversity</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Contact Us</h5></li>
+            </ul>
+          </div>
+    
+          <!-- Footer Links Group 2 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full lg:w-[50%]">
+            <ul class="flex flex-col">
+              <li><h3 class="uppercase font-bold text-white">Support</h3></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Employer Support</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Candidate Support</h5></li>
+            </ul>
+    
+            <ul class="flex flex-col">
+              <li><h3 class="uppercase font-bold text-white">Resources</h3></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Help Center</h5></li>
+              <li class="py-2"><h5 class="font-semibold text-sm text-[#B3B6C1]">Guides</h5></li>
+            </ul>
+          </div>
         </div>
-        <div class="flex w-[40%] gap-32">
-          <ul class="flex flex-col  ">
-            <li> <h3 class="uppercase font-bold text-white">Support</h3> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Employer Support</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Candidate Support</h5> </li>
-          </ul>
-
-
-          <ul class="flex flex-col  ">
-            <li> <h3 class="uppercase font-bold text-white">Support</h3> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Employer Support</h5> </li>
-            <li class="py-4"> <h5 class="font-semibold text-[14px] text-[#B3B6C1]">Candidate Support</h5> </li>
-          </ul>
-
+    
+        <!-- Right Social Icons -->
+        <div class="flex justify-center lg:justify-end items-center w-full lg:w-[15%]">
+          <div class="flex gap-4">
+            <img src="/website/assets/Icons/Quality Hiring/socialMedia/facebook.png" width="28" alt="facebook" class="hover:opacity-80 cursor-pointer transition-all duration-200">
+            <img src="/website/assets/Icons/Quality Hiring/socialMedia/linkedin.png" width="28" alt="linkedin" class="hover:opacity-80 cursor-pointer transition-all duration-200">
+            <img src="/website/assets/Icons/Quality Hiring/socialMedia/social.png" width="28" alt="social" class="hover:opacity-80 cursor-pointer transition-all duration-200">
+          </div>
         </div>
       </div>
-      <div class="w-[10%] flex flex-col">
-        <div class="flex gap-3">
-          <img src="/website/assets/Icons/Quality Hiring/socialMedia/facebook.png" width="30" alt="facebook">
-          <img src="/website/assets/Icons/Quality Hiring/socialMedia/linkedin.png" width="30" alt="linkedin">
-          <img src="/website/assets/Icons/Quality Hiring/socialMedia/social.png" width="30" alt="social">
-        </div>
+    
+      <!-- Bottom Divider -->
+      <div class="mt-10 border-t border-gray-700 pt-6 text-center">
+        <p class="text-sm text-[#B3B6C1]">© 2025 Talent’s Hub. All rights reserved.</p>
       </div>
     </footer>
+    
 
     <!-- <section class="py-9 pb-24 w-full" style="background-image: linear-gradient(#ffffff,#f0faf4);">
       <div class="w-[80%] mx-auto">
@@ -752,6 +1116,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Inline script: builds slides and hooks tabs to swiper -->
     <script>
@@ -871,28 +1237,28 @@
       });
 
 
-      document.addEventListener("DOMContentLoaded", () => {
-      const blocks = document.querySelectorAll(".content-block");
+      gsap.registerPlugin(ScrollTrigger);
+
+      const contentBlocks = document.querySelectorAll(".content-block");
       const featureImg = document.getElementById("feature-img");
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const newImg = entry.target.getAttribute("data-img");
-              featureImg.style.opacity = 0;
-              setTimeout(() => {
-                featureImg.src = newImg;
-                featureImg.style.opacity = 1;
-              }, 300); // smooth fade effect
-            }
-          });
-        },
-        { threshold: 0.5 } // triggers when 50% of block is visible
-      );
-
-      blocks.forEach((block) => observer.observe(block));
-    });
+      contentBlocks.forEach((block) => {
+        ScrollTrigger.create({
+          trigger: block,
+          start: "top center",
+          onEnter: () => {
+            const img = block.getAttribute("data-img");
+            gsap.to(featureImg, {
+              opacity: 0,
+              duration: 0.5,
+              onComplete: () => {
+                featureImg.src = img;
+                gsap.to(featureImg, { opacity: 1, duration: 0.5 });
+              },
+            });
+          },
+        });
+      });
     </script>
   </body>
 </html>
