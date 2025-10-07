@@ -21,6 +21,16 @@
     />
 
     <style>
+      html,
+      body {
+        overflow-x: hidden; 
+        overflow-y: auto; 
+        height: 100%; 
+        width: 100%; 
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
       .bg-swiper {
         position: absolute;
         inset: 0;
@@ -39,99 +49,108 @@
       #heroContent {
         transition: opacity 0.35s ease;
       }
+
+      /* Smooth scroll behavior */
+      .scroll-target {
+        scroll-margin-top: 100px; /* Adjust for your header height */
+      }
+
+      /* Active nav link styling */
+      .nav-link.active {
+        color: #000;
+        font-weight: 600;
+      }
     </style>
   </head>
 
   <body class="bg-white font-sans antialiased overflow-x-hidden">
 
     <!-- NAVBAR -->
-    <header class="md:max-w-7xl max-w-full md:mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4 bg-white">
-      <!-- Mobile Logo -->
-      <a href="#" class="flex items-center md:hidden lg:flex gap-3">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-300 flex items-center justify-center font-extrabold text-slate-900">
-          TH
-        </div>
-        <div class="font-extrabold text-lg text-slate-900">TalentHub</div>
-      </a>
-
-      <!-- Mobile menu -->
-      <button
-        class="md:hidden text-2xl text-gray-800"
-        onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
-      >
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex gap-10 text-gray-700 font-medium">
-        <a href="#features" class="hover:text-black transition-colors">Platforms</a>
-        <a href="#showcase" class="hover:text-black transition-colors">Solutions</a>
-        <a href="#how" class="hover:text-black transition-colors">Resources</a>
-        <a href="#contact" class="hover:text-black transition-colors">Company</a>
-        <a href="#contact" class="hover:text-black transition-colors">Customers</a>
-      </nav>
-
-      <!-- Tablet Nav (768px–1023px) -->
-      <div class="hidden md:flex lg:hidden md:px-0 md:py-0 w-full flex-col px-6 py-4">
-        <!-- Top Row -->
-        <div class="w-full flex items-center justify-between">
-          <!-- Brand -->
-          <a href="#" class="flex items-center gap-3">
+    <header class=" max-w-full  px-6 py-4  bg-white sticky top-0 z-50 shadow-sm">
+      <div class="md:max-w-[80%] md:mx-auto flex items-center justify-between flex-wrap gap-4">
+          <!-- Mobile Logo -->
+          <a href="#" class="flex items-center md:hidden lg:flex gap-3">
             <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-300 flex items-center justify-center font-extrabold text-slate-900">
               TH
             </div>
-            <div class="font-extrabold text-lg text-slate-900 leading-none">TalentHub</div>
+            <div class="font-extrabold text-lg text-slate-900">TalentHub</div>
           </a>
 
-          <!-- Actions -->
-          <div class="flex items-center gap-4">
+          <!-- Mobile menu -->
+          <button class="md:hidden text-2xl text-gray-800" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex gap-10 text-gray-700 font-medium">
+            <a href="#features" class="nav-link hover:text-black transition-colors">Platforms</a>
+            <a href="#showcase" class="nav-link hover:text-black transition-colors">Solutions</a>
+            <a href="#how" class="nav-link hover:text-black transition-colors">Resources</a>
+            <a href="#company" class="nav-link hover:text-black transition-colors">Company</a>
+            <a href="#customers" class="nav-link hover:text-black transition-colors">Customers</a>
+          </nav>
+
+          <!-- Tablet Nav (768px–1023px) -->
+          <div class="hidden md:flex lg:hidden md:px-0 md:py-0 w-full flex-col px-6 py-4">
+            <!-- Top Row -->
+            <div class="w-full flex items-center justify-between">
+              <!-- Brand -->
+              <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-300 flex items-center justify-center font-extrabold text-slate-900">
+                  TH
+                </div>
+                <div class="font-extrabold text-lg text-slate-900 leading-none">TalentHub</div>
+              </a>
+
+              <!-- Actions -->
+              <div class="flex items-center gap-4">
+                <button class="px-4 py-2 font-bold text-black">Log in</button>
+                <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
+                  Request Demo <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="mt-6 mb-2 w-full">
+              <nav class="flex justify-center gap-10 text-gray-700 font-medium">
+                <a href="#features" class="nav-link hover:text-black transition-colors">Platforms</a>
+                <a href="#showcase" class="nav-link hover:text-black transition-colors">Solutions</a>
+                <a href="#how" class="nav-link hover:text-black transition-colors">Resources</a>
+                <a href="#company" class="nav-link hover:text-black transition-colors">Company</a>
+                <a href="#customers" class="nav-link hover:text-black transition-colors">Customers</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Desktop Right Side Buttons -->
+          <div class="hidden lg:flex items-center gap-4">
             <button class="px-4 py-2 font-bold text-black">Log in</button>
-            <button class="bg-green-600 px-4 py-2 flex items-center gap-2 rounded-lg font-bold text-white shadow-md">
+            <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
               Request Demo <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
-        </div>
 
-        <!-- Bottom Row -->
-        <div class="mt-6 mb-2 w-full">
-          <nav class="flex justify-center gap-10 text-gray-700 font-medium">
-            <a href="#features" class="hover:text-black transition-colors">Platforms</a>
-            <a href="#showcase" class="hover:text-black transition-colors">Solutions</a>
-            <a href="#how" class="hover:text-black transition-colors">Resources</a>
-            <a href="#contact" class="hover:text-black transition-colors">Company</a>
-            <a href="#contact" class="hover:text-black transition-colors">Customers</a>
-          </nav>
-        </div>
-      </div>
+          <!-- Mobile Menu Drawer -->
+          <div id="mobileMenu" class="hidden w-full md:hidden flex-col items-start mt-4 space-y-3">
+            <a href="#features" class="nav-link block w-full text-gray-700 font-medium">Platforms</a>
+            <a href="#showcase" class="nav-link block w-full text-gray-700 font-medium">Solutions</a>
+            <a href="#how" class="nav-link block w-full text-gray-700 font-medium">Resources</a>
+            <a href="#company" class="nav-link block w-full text-gray-700 font-medium">Company</a>
+            <a href="#customers" class="nav-link block w-full text-gray-700 font-medium">Customers</a>
 
-      <!-- Desktop Right Side Buttons -->
-      <div class="hidden lg:flex items-center gap-4">
-        <button class="px-4 py-2 font-bold text-black">Log in</button>
-        <button class="bg-green-600 px-4 py-2 flex items-center gap-2 rounded-lg font-bold text-white shadow-md">
-          Request Demo <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
-
-      <!-- Mobile Menu Drawer -->
-      <div id="mobileMenu" class="hidden w-full md:hidden flex-col items-start mt-4 space-y-3">
-        <a href="#features" class="block w-full text-gray-700 font-medium">Platforms</a>
-        <a href="#showcase" class="block w-full text-gray-700 font-medium">Solutions</a>
-        <a href="#how" class="block w-full text-gray-700 font-medium">Resources</a>
-        <a href="#contact" class="block w-full text-gray-700 font-medium">Company</a>
-        <a href="#contact" class="block w-full text-gray-700 font-medium">Customers</a>
-
-        <div class="flex flex-col gap-2 w-full mt-4">
-          <button class="px-4 py-2 font-bold text-black text-left">Log in</button>
-          <button class="bg-green-600 px-4 py-2 rounded-lg font-bold text-white shadow-md w-full text-left">
-            Request Demo
-          </button>
-        </div>
+            <div class="flex flex-col gap-2 w-full mt-4">
+              <button class="px-4 py-2 font-bold text-black text-left">Log in</button>
+              <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
+                Request Demo
+              </button>
+            </div>
+          </div>
       </div>
     </header>
 
-
     <!-- HERO -->
-    <section id="heroSection" class="w-full p-4 md:py-6 grid md:grid-cols-2 gap-8 h-[95vh] md:min-h-[90vh] lg:min-h-[90vh] relative items-center overflow-hidden" >
+    <section id="heroSection" class="w-full p-4 md:py-6 grid md:grid-cols-2 gap-8 h-[80vh] md:min-h-[90vh] lg:min-h-[90vh] relative items-center" >
       <!-- Swiper background -->
       <div class="bg-swiper swiper">
         <div class="swiper-wrapper">
@@ -141,15 +160,15 @@
 
       <!-- Card -->
       <article class="z-10 relative flex justify-center w-full">
-        <div class="bg-white rounded-xl md:p-4 px-2 sm:w-[90%] lg:w-[610px] md:w-[100%] min-h-[60vh] md:min-h-[50vh] sm:min-h-[70vh] flex flex-col justify-between shadow-lg" >
+        <div class="bg-white rounded-xl md:p-4 px-2 sm:w-[90%] lg:w-[590px] md:w-[100%] min-h-[50vh] md:min-h-[50vh] sm:min-h-[70vh] flex flex-col justify-between shadow-lg" >
           <!-- Tabs -->
           <div class="bg-[#DFF3F7] rounded-md p-2 flex flex-wrap gap-2 items-center justify-center sm:justify-start" >
-            <button data-id="0" class="tab-btn bg-white rounded-md px-3 py-2 text-[13px] sm:text-[14px] text-black font-bold shadow" > Platform </button>
-            <button data-id="1" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Screen </button>
-            <button data-id="2" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Interview </button>
-            <button data-id="3" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Scheduled </button>
-            <button data-id="4" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Structure </button>
-            <button data-id="5" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Intelligence </button>
+            <button data-id="0" class="tab-btn bg-white rounded-md px-3 py-2 text-[13px] sm:text-[14px] text-black font-bold shadow" > Discover </button>
+            <button data-id="1" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Connect </button>
+            <button data-id="2" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Showcase </button>
+            <button data-id="3" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Collaborate </button>
+            <button data-id="4" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Hire </button>
+            <button data-id="5" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Grow </button>
           </div>
 
           <!-- Content -->
@@ -167,116 +186,88 @@
           </div>
 
           <!-- Buttons -->
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:justify-start m-0" >
-            <button class="bg-green-600 px-4 py-3 flex items-center justify-center gap-3 rounded-lg font-bold text-white shadow-md" >
+          <div class="flex flex-col sm:flex-row gap-3 pb-4 sm:gap-4 justify-center sm:justify-start m-0" >
+            <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
               Request Demo <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <button class="bg-transparent border-slate-400 border-2 px-4 py-3 flex items-center justify-center gap-3 rounded-lg font-bold text-black shadow-md" >
+            <button class="bg-transparent border-2 border-black px-6 py-3 rounded-lg font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md w-full sm:w-auto" >
               <i class="fa-regular fa-circle-play"></i> Watch 2-Minute Video
             </button>
-          </div>
-
-          <!-- Logos -->
-          <div
-            class="flex justify-center w-full  gap-x-16 my-3 mt-5 md:gap-x-5"
-          >
-            <div class="flex flex-col items-center">
-              <img src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
-              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
-            </div>
-            <div class="flex flex-col items-center">
-              <img src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
-              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
-            </div>
-            <div class="flex flex-col items-center">
-              <img
-                src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
-              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
-            </div>
-            <div class="flex flex-col items-center">
-              <img
-                src="/website/assets/Icons/star-review.svg" alt="star-review" class="w-20" />
-              <h6 class="text-sm text-gray-700 mt-1">G2 Reviews</h6>
-            </div>
           </div>
         </div>
       </article>
     </section>
 
-    
-    <section class="py-12 w-full bg-[#F8F8F8]">
+    <!-- FEATURES SECTION -->
+    <section id="features" class="scroll-target py-12 w-full bg-[#F8F8F8]">
       <div class="w-[90%] md:w-[85%] lg:w-[80%] mx-auto text-center">
         
-        <!-- Heading -->
         <h2 class="py-3 text-[28px] sm:text-[32px] lg:text-[36px] font-semibold text-[#161616] leading-snug">
-          Real Hiring Real Impact
+          Empowering Talent, Creating Impact
         </h2>
     
-        <!-- Subtitle -->
         <p class="py-4 text-gray-800 text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed w-[95%] sm:w-[80%] lg:w-[70%] mx-auto">
-          TalentHub's interview intelligence platform is transforming recruitment efficiency with its powerful AI.
-          Our tool has helped clients save 30% of recruitment hours.
+          TalentHub is redefining how people and organizations connect, collaborate, and grow. Our platform bridges opportunities and skills — helping creators get discovered, teams collaborate effortlessly, and businesses scale faster than ever.
         </p>
     
-        <!-- Stats Grid -->
+        
         <div class="mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 lg:gap-10 justify-items-center">
           
-          <!-- 1 -->
+          
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              30<span class="text-[#16A34A]">%</span>
+              10<span class="text-[#16A34A]">K+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
-              Less <br> Time-to-hire
+              Talents <br> Connected
             </p>
           </div>
     
-          <!-- 2 -->
+          
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              75<span class="text-[#16A34A]">min</span>
+              250<span class="text-[#16A34A]">+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
-              Saved <br> per screen
+              Active <br> Collaborations
             </p>
           </div>
     
           <!-- 3 -->
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              $4<span class="text-[#16A34A]">k+</span>
+              85<span class="text-[#16A34A]">%</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
-              Savings <br> per hire
+              Success  <br> Rate
             </p>
           </div>
     
-          <!-- 4 -->
+        
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              17<span class="text-[#16A34A]">%</span>
+              120<span class="text-[#16A34A]">+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
-              Faster <br> offer rollouts
+              Partner <br> Organizations
             </p>
           </div>
-    
         </div>
       </div>
     </section>
     
 
-
-    <section class="w-full py-12 bg-[#F5FEF7] relative overflow-hidden">
+    <!-- SHOWCASE SECTION -->
+    <section id="showcase" class="scroll-target w-full py-12 bg-[#F5FEF7] relative overflow-hidden">
       <div class="w-[90%] sm:w-[85%] lg:w-[80%] mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 relative">
         
         <!-- Text Content -->
         <div class="max-w-full md:max-w-[320px] lg:max-w-[440px] text-center md:text-left">
           <h2 class="py-3 text-[26px] sm:text-[30px] lg:text-[36px] font-semibold text-[#161616] leading-snug">
-            How Hiring looks like <br class="hidden sm:block"> without TalentHub's
+            How Talent Discovery <br class="hidden sm:block"> Without TalentHub's
           </h2>
           <p class="py-4 text-gray-800 text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed">
-            Hiring the right candidate is vital, and BarRaiser's exceptional hiring tools can help you find the perfect recruit.
+            Finding the right talent shouldn't feel like chasing shadows — yet, without a unified platform, opportunities are lost, and potential remains unseen.
           </p>
         </div>
     
@@ -291,369 +282,164 @@
     
       </div>
     </section>
-    
 
-    <section class="w-full py-12 bg-[#F8F8F8]">
-      <div class="w-[90%] sm:w-[85%] lg:w-[80%] mx-auto">
-        <!-- Heading -->
-        <h2 class="py-3 text-[26px] sm:text-[30px] lg:text-[36px] text-[#161616] text-center font-medium leading-snug">
-          Validate <span class="text-[#16A34A]">skills</span> throughout the hiring process
-        </h2>
+
+     <!-- Hiring & Job Search Section -->
+   <section id="how" class="scroll-target relative bg-[#fdfefe] py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <div class="mx-auto mb-6 w-14 h-14 flex items-center justify-center rounded-full bg-green-600 shadow-lg" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L15 12 9.75 7v10z" />
+            </svg>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
+            Talent & Opportunity <br />
+            <span class="bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent">
+              Reimagined
+            </span>
+          </h2>
+          <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-600">
+            TalentHub redefines how people connect, collaborate, and grow. <br>
+            It's more than a platform — it's a global space where individuals and organizations unite to create meaningful work, discover rising talent, and build lasting impact.
+          </p>
+        </div>
     
-        <!-- Icon Row -->
-        <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
-          <li class="flex gap-2 sm:gap-3 items-center">
-            <i class="fa-solid fa-magnifying-glass text-[#471e7e] text-lg"></i>
-            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">SKILLS VALIDATION</span>
-          </li>
-          <li class="flex gap-2 sm:gap-3 items-center">
-            <i class="fa-light fa-video text-[#471e7e] text-lg"></i>
-            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">INTELLIGENT INTERVIEWING</span>
-          </li>
-          <li class="flex gap-2 sm:gap-3 items-center">
-            <i class="fa-light fa-message text-[#471e7e] text-lg"></i>
-            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">TALENT ENGAGEMENT</span>
-          </li>
-          <li class="flex gap-2 sm:gap-3 items-center">
-            <i class="fa-light fa-calendar-days text-[#471e7e] text-lg"></i>
-            <span class="text-[13px] sm:text-[14px] uppercase text-[#2b2d37] font-medium">WORKFLOW AUTOMATION</span>
-          </li>
-        </ul>
-    
-        <!-- Main Content -->
-        <div class="flex flex-col-reverse lg:flex-row gap-10 mt-16 lg:mt-36 items-start">
-          <!-- Left Content -->
-          <div class="w-full lg:w-1/2 space-y-20 sm:space-y-32 lg:space-y-60">
-            <!-- Content Block 1 -->
-            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img1.webp">
-              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">SKILLS VALIDATION</h4>
-              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
-                Validate role-specific skills.
-              </h3>
-              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
-                Simplify hiring, reduce bias, and future-proof your hiring with Virtual Job Tryouts and AI-powered assessments.
-              </p>
-              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
-                Learn More
-                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M4.03203 8.37113C4.01391 8.46863 3.86703 8.46863 3.84891 8.37113C3.75016 7.84613 3.57641 7.36426 3.32828 6.92488C2.91578 6.19863 2.34578 5.63176 1.61828 5.22551C1.18703 4.98426 0.714531 4.81551 0.200157 4.71739C0.0995299 4.69864 0.100159 4.56051 0.200781 4.54114C0.715155 4.44301 1.18766 4.27426 1.61828 4.03301C2.34578 3.62738 2.91578 3.06051 3.32828 2.33301C3.57641 1.89363 3.75016 1.41176 3.84891 0.886132C3.86703 0.789258 4.01391 0.789258 4.03203 0.886132C4.13078 1.41176 4.30453 1.89363 4.55265 2.33301C4.96453 3.06051 5.53516 3.62738 6.26203 4.03301C6.69266 4.27426 7.16515 4.44301 7.67953 4.54114C7.78078 4.56051 7.7814 4.69864 7.68078 4.71739C7.16578 4.81551 6.69266 4.98426 6.26203 5.22551C5.53516 5.63176 4.96453 6.19863 4.55265 6.92488C4.30453 7.36426 4.13078 7.84613 4.03203 8.37113Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </button>
+        
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+          
+        
+          <div class="relative w-full">
+            <div class="swiper mySwiper rounded-2xl shadow-xl">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="/website/assets/interview-1.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="/website/assets/interview-2.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="/website/assets/interview-3.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
-    
-            <!-- Content Block 2 -->
-            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img2.webp">
-              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">INTELLIGENT INTERVIEWING</h4>
-              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
-                Smart interviews made simple.
-              </h3>
-              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
-                Conduct structured interviews powered by AI insights to identify the best fit faster.
-              </p>
-              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
-                Learn More
-                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
-              </button>
-            </div>
-    
-            <!-- Content Block 3 -->
-            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img3.webp">
-              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">TALENT ENGAGEMENT</h4>
-              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
-                Engage top talent at every step.
-              </h3>
-              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
-                Keep candidates informed, connected, and motivated through automated touchpoints.
-              </p>
-              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
-                Learn More
-                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
-              </button>
-            </div>
-    
-            <!-- Content Block 4 -->
-            <div class="content-block" data-img="/website/assets/Valide%20Skills/Img4.webp">
-              <h4 class="uppercase text-[15px] sm:text-[16px] text-[#6064df] leading-5">WORKFLOW AUTOMATION</h4>
-              <h3 class="text-[22px] sm:text-[26px] lg:text-[30px] font-normal my-2 text-[#2b2d37]">
-                Automate hiring workflows.
-              </h3>
-              <p class="text-[17px] sm:text-[20px] lg:text-[23px] max-w-[450px] font-medium text-[#566068] my-3">
-                Eliminate repetitive tasks and speed up hiring through seamless process automation.
-              </p>
-              <button class="text-[16px] flex gap-2 items-center px-3 py-1 text-white font-normal rounded-lg bg-[#16A34A]">
-                Learn More
-                <svg width="8" height="9" viewBox="0 0 8 9" fill="none"><path d="M4.03203 8.37113..." fill="currentColor"></path></svg>
-              </button>
+            <div
+              class="absolute bottom-4 right-4 bg-white text-green-600 text-sm px-3 py-2 rounded-lg shadow-md font-semibold"
+            >
+              Live AI Interview
             </div>
           </div>
     
-          <!-- Right Image Panel -->
-          <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mb-10 lg:mb-0">
-            <div class="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-full h-[280px] sm:h-[360px] md:h-[420px] rounded-xl overflow-hidden">
-              <img
-                id="feature-img"
-                src="/website/assets/Valide%20Skills/Img1.webp"
-                alt="feature"
-                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
-              />
+    
+        
+          <div class="space-y-10">
+            <h3 class="text-2xl font-semibold text-gray-900">
+              Real Interviews, Real Results
+            </h3>
+    
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
+              >
+                <i class="fa-solid fa-user-check text-green-600 text-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-gray-900">Discover Authentic Talent</h4>
+                <p class="text-gray-600">
+                  Explore unique portfolios and personal stories that go beyond resumes. Find people who share your passion and purpose.
+                </p>
+              </div>
+            </div>
+    
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
+              >
+                <i class="fa-solid fa-bolt text-green-600 text-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-gray-900">Collaborate Seamlessly</h4>
+                <p class="text-gray-600">
+                  Work together across borders with clarity, creativity, and shared vision — from projects to partnerships.
+                </p>
+              </div>
+            </div>
+    
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
+              >
+                <i class="fa-solid fa-layer-group text-green-600 text-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-gray-900">Scale with Impact</h4>
+                <p class="text-gray-600">
+                  Build stronger networks, unlock new opportunities, and bring your creative ideas to life on a global stage.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    
+  </section>
 
-    <section class="w-full py-12 bg-white">
-      <div class="w-[90%] md:w-[85%] lg:w-[80%] mx-auto">
-        <div class="flex flex-col items-center justify-center gap-10">
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden rounded-2xl shadow-lg border border-gray-200"
-          >
-            <!-- Left Image -->
-            <div
-              class="col-span-1 md:col-span-2 lg:col-span-1 h-[240px] sm:h-[320px] md:h-full"
-            >
-              <img
-                src="/website/assets/Icons/InterviewProducts/fashion-portrait-young-girl-working-cafe-terrace-sunny-day.jpg"
-                alt="Products illustration"
-                loading="lazy"
-                class="object-cover object-center w-full h-full rounded-t-2xl md:rounded-none md:rounded-l-2xl"
-              />
-            </div>
     
-            <!-- Interviewing Products -->
-            <div
-              class="flex flex-col gap-5 border-t md:border-t-0 border-gray-200 p-6 sm:p-8 md:p-10 lg:p-12 md:rounded-bl-2xl lg:rounded-none"
-            >
-              <h3
-                class="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 pt-4"
-              >
-                Interviewing Products
-              </h3>
-              <p class="text-gray-600 text-base sm:text-lg">
-                Plan, conduct, and optimize interview processes without the heavy
-                lifting.
-              </p>
-    
-              <ul class="flex flex-col gap-3 pb-6">
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/play-button.png"
-                      width="22"
-                      height="22"
-                      loading="lazy"
-                      alt="Play"
-                    />
-                    Pre-Recorded Video Interviews
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/video.png"
-                      width="22"
-                      height="22"
-                      alt="Video"
-                    />
-                    Live Video Interviews
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/calendar.png"
-                      width="22"
-                      height="22"
-                      alt="Calendar"
-                    />
-                    Interview Scheduling Software
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/user.png"
-                      width="22"
-                      height="22"
-                      alt="User"
-                    />
-                    Structured Interviews
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/group.png"
-                      width="22"
-                      height="22"
-                      alt="Group"
-                    />
-                    Digital In-Person Interviews
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/save-time.png"
-                      width="22"
-                      height="22"
-                      alt="Save"
-                    />
-                    Interview Management System
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-              </ul>
-            </div>
-    
-            <!-- Hiring Products -->
-            <div
-              class="flex flex-col gap-5 border-t md:border-l border-gray-200 p-6 sm:p-8 md:p-10 lg:p-12 md:rounded-br-2xl lg:rounded-r-2xl"
-            >
-              <h3
-                class="text-2xl sm:text-3xl font-bold leading-tight text-gray-900 pt-4"
-              >
-                Hiring Products
-              </h3>
-              <p class="text-gray-600 text-base sm:text-lg">
-                Attract, identify, and secure strong candidates with
-                enterprise-level tools.
-              </p>
-    
-              <ul class="flex flex-col gap-3 pb-6">
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/profile.png"
-                      width="26"
-                      height="26"
-                      alt="Profile"
-                    />
-                    Automated Reference Checks
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/user-avatar.png"
-                      width="26"
-                      height="26"
-                      alt="Avatar"
-                    />
-                    Skills Testing
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-    
-                <li class="flex items-center justify-between gap-3">
-                  <a
-                    href="#"
-                    class="flex items-center gap-2 font-semibold hover:text-[#471e7e]"
-                  >
-                    <img
-                      src="/website/assets/Icons/InterviewProducts/online-meeting.png"
-                      width="26"
-                      height="26"
-                      alt="Meeting"
-                    />
-                    Video Proctoring
-                  </a>
-                  <img
-                    src="/website/assets/Icons/InterviewProducts/arrow-right.svg"
-                    width="18"
-                    height="18"
-                    alt="arrow"
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
+  <section id="company" class="scroll-target py-9 pb-24 w-full bg-gradient-to-b from-[#ffffff] to-[#f0faf4]">
+    <div class="w-[90%] sm:w-[85%] md:w-[80%] mx-auto">
+      <!-- Heading -->
+      <h3 class="py-3 text-2xl sm:text-3xl md:text-[36px] w-full sm:w-[80%] md:w-[60%] mx-auto text-center font-bold text-[#0d0517]">
+        For Whom We Built <span class="text-green-600">TalentHub</span>
+      </h3>
+      <p class="py-4 w-full sm:w-[80%] md:w-[70%] text-center mx-auto text-gray-700 text-base sm:text-lg">
+        TalentHub is crafted for creators, recruiters, and organizations who believe in potential over paperwork.
+        It's for those who value connection, creativity, and meaningful collaboration.
+      </p>
+  
+      <!-- Boxes -->
+      <div class="flex flex-col md:flex-row justify-center md:justify-between gap-8 md:gap-6 w-full mt-10">
+        
+        <!-- Box 1 -->
+        <div class="p-6 rounded-xl w-full md:w-[32%] shadow-md border bg-white border-[#b7b7b964] text-center md:text-left hover:shadow-lg transition-all duration-300">
+          <img src="/website/assets/Icons/SmallBoxIcons/Icon1.avif" width="100" alt="Icon1" class="mx-auto md:mx-0">
+          <h4 class="text-xl sm:text-2xl md:text-[28px] py-3 font-semibold leading-tight text-[#0d0517]">
+            Recruiters
+          </h4>
+          <p class="text-base sm:text-[18px] text-gray-700">
+            Find genuine talent faster — without the noise. Discover candidates who fit your team's values and goals.
+          </p>
         </div>
+  
+        <!-- Box 2 -->
+        <div class="p-6 rounded-xl w-full md:w-[32%] shadow-md border bg-white border-[#b7b7b964] text-center md:text-left hover:shadow-lg transition-all duration-300">
+          <img src="/website/assets/Icons/SmallBoxIcons/Icon2.avif" width="100" alt="Icon2" class="mx-auto md:mx-0">
+          <h4 class="text-xl sm:text-2xl md:text-[28px] py-3 font-semibold leading-tight text-[#0d0517]">
+            Creators
+          </h4>
+          <p class="text-base sm:text-[18px] text-gray-700">
+            Showcase your real skills, not just a resume. Let your work speak louder and reach opportunities that matter.
+          </p>
+        </div>
+  
+        <!-- Box 3 -->
+        <div class="p-6 rounded-xl w-full md:w-[32%] shadow-md border bg-white border-[#b7b7b964] text-center md:text-left hover:shadow-lg transition-all duration-300">
+          <img src="/website/assets/Icons/SmallBoxIcons/Icon3.avif" width="100" alt="Icon3" class="mx-auto md:mx-0">
+          <h4 class="text-xl sm:text-2xl md:text-[28px] py-3 font-semibold leading-tight text-[#0d0517]">
+            Startups
+          </h4>
+          <p class="text-base sm:text-[18px] text-gray-700">
+            Build teams that grow with your mission. Discover talent that believes in building things from scratch.
+          </p>
+        </div>
+  
       </div>
-    </section>
-    
-    
-
+    </div>
+  </section>
+  
+  
+  
     <section class="w-full py-16 pb-0 overflow-hidden bg-white">
       <div class="w-[90%] md:w-[80%] mx-auto">
         <div class="flex flex-col-reverse lg:flex-row items-center justify-between relative gap-10">
@@ -675,11 +461,10 @@
           <!-- Right Text Content -->
           <div class="text-center lg:text-left w-full lg:w-1/2">
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#161616]">
-              Quality Hiring Starts Here
+              Find the Right Talent, Effortlessly
             </h2>
             <p class="py-4 text-gray-800 text-base sm:text-lg md:text-xl">
-              No matter where you are on your journey to building a better hiring process, 
-              Spark Hire's team of experts is here to help!
+              From shortlisting to final hire — TalentHub streamlines every step so you can focus on what really matters: building your dream team.
             </p>
     
             <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-4">
@@ -694,7 +479,6 @@
         </div>
       </div>
     </section>
-    
 
     <footer class="w-full bg-[#272727] px-6 py-12">
       <div class="w-[90%] mx-auto flex flex-col lg:flex-row justify-between gap-10">
@@ -759,360 +543,9 @@
     
       <!-- Bottom Divider -->
       <div class="mt-10 border-t border-gray-700 pt-6 text-center">
-        <p class="text-sm text-[#B3B6C1]">© 2025 Talent’s Hub. All rights reserved.</p>
+        <p class="text-sm text-[#B3B6C1]">© 2025 Talent's Hub. All rights reserved.</p>
       </div>
     </footer>
-    
-
-    <!-- <section class="py-9 pb-24 w-full" style="background-image: linear-gradient(#ffffff,#f0faf4);">
-      <div class="w-[80%] mx-auto">
-        <h3 class="py-3 text-[36px] w-[60%] mx-auto text-center font-bold text-[#0d0517]">Hiring Challenges Customers Often Face
-          Before Spark Hire</h3>
-        <p class="py-4 w-[70%] text-center mx-auto">Easy Apply, AI in hiring, the requirement to “do more with less”, and HR tech inefficiencies are impeding your ability to hire great people. </p>
-        <div class="flex justify-between gap-7 w-full mt-7">
-          <div class="p-4 rounded-md w-[450px] shadow-md border-2 bg-white border-[#b7b7b964]">
-            <img src="/website/assets/Icons/SmallBoxIcons/Icon1.avif" width="100" alt="Icon1">
-            <h4 class="text-[28px] py-3 font-medium leading-tight">Loss of quality due to time constraints</h4>
-            <p class="text-[18px] py-5">Are you sacrificing quality due to time constraints, often leading to frustration later in the hiring process or worse, the wrong hires? </p>
-          </div>
-          <div class="p-4 rounded-md w-[450px] shadow-md border-2 bg-white border-[#b7b7b964]">
-            <img src="/website/assets/Icons/SmallBoxIcons/Icon2.avif" width="100" alt="Icon1">
-            <h4 class="text-[28px] py-3 font-medium leading-tight">Fragmented hiring team collaboration </h4>
-            <p class="text-[18px] py-5">Are you constantly chasing down hiring stakeholders to interview, review, and evaluate candidates, often leading to hiring delays and a poor candidate experience? </p>
-          </div>
-          <div class="p-4 rounded-md w-[450px] shadow-md border-2 bg-white border-[#b7b7b964]">
-            <img src="/website/assets/Icons/SmallBoxIcons/Icon3.avif" width="100" alt="Icon1">
-            <h4 class="text-[28px] py-3 font-medium leading-tight">Lost time due to a bloated tech stack</h4>
-            <p class="text-[18px] py-5">Are you wasting time working around many HR tools or systems rather than in them, decreasing your ability to hire quickly and as one collaborative team? </p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Hiring & Job Search Section -->
-<!-- <section class="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20">
-  <div class="max-w-7xl mx-auto px-6">
-    
-    <!-- Header -->
-    <!-- <div class="text-center mb-16">
-      <div
-        class="mx-auto mb-6 w-14 h-14 flex items-center justify-center rounded-full bg-green-600 shadow-lg"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-7 w-7 text-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L15 12 9.75 7v10z" />
-        </svg>
-      </div>
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
-        Hiring & Job Search <br />
-        <span class="bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent">
-          Reimagined
-        </span>
-      </h2>
-      <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-600">
-        AI-powered video interviews that reveal authentic talent while saving time for everyone. 
-        No more resume pile guessing. No more mass application frustration.
-      </p>
-    </div>
-
-    
-    <div class="grid md:grid-cols-2 gap-14 items-center">
-      
-    
-      <div class="relative w-full">
-        <div class="swiper mySwiper rounded-2xl shadow-xl">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="/website/assets/interview-1.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/website/assets/interview-2.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
-            </div>
-            <div class="swiper-slide">
-              <img src="/website/assets/interview-3.png" alt="Interview Showcase" class="w-full h-full object-cover rounded-2xl" />
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-        <div
-          class="absolute bottom-4 right-4 bg-white text-green-600 text-sm px-3 py-2 rounded-lg shadow-md font-semibold"
-        >
-          Live AI Interview
-        </div>
-      </div>
-
-
-    
-      <div class="space-y-10">
-        <h3 class="text-2xl font-semibold text-gray-900">
-          Real Interviews, Real Results
-        </h3>
-
-        <div class="flex items-start space-x-4">
-          <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
-          >
-            <i class="fa-solid fa-user-check text-green-600 text-lg"></i>
-          </div>
-          <div>
-            <h4 class="text-lg font-bold text-gray-900">Authentic Talent</h4>
-            <p class="text-gray-600">
-              Go beyond resumes with real communication, expression, and problem-solving.
-            </p>
-          </div>
-        </div>
-
-        <div class="flex items-start space-x-4">
-          <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
-          >
-            <i class="fa-solid fa-bolt text-green-600 text-lg"></i>
-          </div>
-          <div>
-            <h4 class="text-lg font-bold text-gray-900">Faster Decisions</h4>
-            <p class="text-gray-600">
-              Save hours of screening by jumping straight to meaningful interviews.
-            </p>
-          </div>
-        </div>
-
-        <div class="flex items-start space-x-4">
-          <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 shadow-inner"
-          >
-            <i class="fa-solid fa-layer-group text-green-600 text-lg"></i>
-          </div>
-          <div>
-            <h4 class="text-lg font-bold text-gray-900">Scalable Hiring</h4>
-            <p class="text-gray-600">
-              Interview dozens at once without losing the personal touch.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-
-
-    <!-- <section class="bg-[#0E1424] py-20">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <!-- Heading -->
-        <!-- <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-extrabold text-white">
-            Ready to Transform <br />
-            <span
-              class="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
-            >
-              Your Career Journey?
-            </span>
-          </h2>
-          <p class="mt-4 text-lg text-gray-400">
-            Whether you’re a job seeker or a recruiter, TalentHub makes the
-            process smarter, faster, and more human.
-          </p>
-        </div>
-
-        
-        <div class="grid md:grid-cols-2 gap-10">
-          
-          <div
-            class="bg-[#141A2E] rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
-          >
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-green-400 to-blue-500 text-white text-2xl"
-              >
-                👤
-              </div>
-              <h3 class="ml-4 text-2xl font-semibold text-white">
-                For Job Seekers
-              </h3>
-            </div>
-
-            <h4 class="text-lg font-medium text-white mb-4">
-              Stop Being Just Another Resume
-            </h4>
-            <ul class="space-y-4 text-gray-300">
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Stand Out Authentically:</strong> Showcase your
-                  personality and communication skills with video intros.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Get Discovered, Don’t Apply:</strong> Employers find
-                  you directly, skipping endless applications.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Save Time & Energy:</strong> Connect instantly with
-                  interested employers.</span
-                >
-              </li>
-            </ul>
-
-            <button
-              class="mt-6 w-full py-3 rounded-xl font-semibold text-[#0E1424] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition"
-            >
-              Create Your Profile Free
-            </button>
-          </div>
-
-        
-          <div
-            class="bg-[#141A2E] rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
-          >
-            <div class="flex items-center mb-6">
-              <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-green-400 to-blue-500 text-white text-2xl"
-              >
-                🏢
-              </div>
-              <h3 class="ml-4 text-2xl font-semibold text-white">
-                For HR Teams
-              </h3>
-            </div>
-
-            <h4 class="text-lg font-medium text-white mb-4">
-              See Beyond the Resume
-            </h4>
-            <ul class="space-y-4 text-gray-300">
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Rich Candidate Insights:</strong> AI analyzes skills,
-                  traits, and culture fit.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Faster Screening:</strong> Pre-verified skills and
-                  cultural fit save you time.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">✔</span>
-                <span
-                  ><strong>Quality Over Quantity:</strong> Engage with only
-                  serious, motivated candidates.</span
-                >
-              </li>
-            </ul>
-
-            <button
-              class="mt-6 w-full py-3 rounded-xl font-semibold text-[#0E1424] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition"
-            >
-              Start Hiring Smarter
-            </button>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- FEATURES -->
-    <!-- <section id="features" class="max-w-7xl mx-auto px-6 py-24">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center">
-        Why TalentHub?
-      </h2>
-      <p class="mt-3 text-slate-400 text-center max-w-2xl mx-auto">
-        A modern platform designed to help talent shine and companies connect
-        with the right people.
-      </p>
-
-      <div class="mt-12 grid md:grid-cols-3 gap-8">
-        <div
-          class="bg-slate-900/60 p-8 rounded-2xl border border-slate-800 shadow-lg hover:shadow-xl transition"
-        >
-          <div class="text-4xl">⚡</div>
-          <h3 class="mt-4 font-bold text-xl">Lightning Fast Discovery</h3>
-          <p class="text-slate-400 mt-2 text-sm leading-relaxed">
-            Use AI-powered search and smart filters to find exact matches in
-            seconds.
-          </p>
-        </div>
-        <div
-          class="bg-slate-900/60 p-8 rounded-2xl border border-slate-800 shadow-lg hover:shadow-xl transition"
-        >
-          <div class="text-4xl">🎨</div>
-          <h3 class="mt-4 font-bold text-xl">Portfolios that Stand Out</h3>
-          <p class="text-slate-400 mt-2 text-sm leading-relaxed">
-            Showcase projects beautifully with support for video, images, and
-            case studies.
-          </p>
-        </div>
-        <div
-          class="bg-slate-900/60 p-8 rounded-2xl border border-slate-800 shadow-lg hover:shadow-xl transition"
-        >
-          <div class="text-4xl">🔒</div>
-          <h3 class="mt-4 font-bold text-xl">Control & Privacy</h3>
-          <p class="text-slate-400 mt-2 text-sm leading-relaxed">
-            Stay in charge of your visibility and choose who can reach out to
-            you.
-          </p>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- <section class="max-w-8xl mx-auto p-6 bg-[#0E1424]">
-      <h2 class="text-3xl md:text-2xl font-medium text-center">
-        Looks interestings?
-      </h2>
-      <p class="mt-3 text-slate-400 text-center max-w-2xl mx-auto">
-        Register now and let employers find you
-      </p>
-      <div class="mt-6 flex w-full justify-center gap-5">
-        <button
-          class="p-2 w-[300px] rounded-sm font-semibold text-[#0E1424] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition"
-        >
-          Get Started as JOBSEEKER
-        </button>
-        <button
-          class="p-2 w-[300px] rounded-sm font-semibold text-[#0E1424] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition"
-        >
-          Get Started as EMPLOYER
-        </button>
-      </div>
-
-      <p class="mt-6 text-center w-full">Already have account? Sign in</p>
-    </section>
-
-    
-    <footer class="bg-slate-950 py-12 border-t border-slate-800">
-      <div
-        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
-      >
-        <div class="flex items-center gap-3">
-          <div
-            class="w-10 h-10 rounded-lg bg-gradient-to-r from-emerald-400 to-blue-400 flex items-center justify-center font-extrabold text-slate-900"
-          >
-            TH
-          </div>
-          <span class="font-bold">TalentHub</span>
-        </div>
-        <nav class="flex gap-6 text-slate-400 text-sm">
-          <a href="#" class="hover:text-white">Privacy</a>
-          <a href="#" class="hover:text-white">Terms</a>
-          <a href="#" class="hover:text-white">Support</a>
-        </nav>
-        <p class="text-slate-500 text-xs">
-          &copy; 2025 TalentHub. All rights reserved.
-        </p>
-      </div>
-    </footer> -->
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -1126,39 +559,39 @@
         const data = [
           {
             bg: "/website/assets/HeroSectionImgs/HeroImg.jpg",
-            sub: "Platform System",
-            title: "Seamless Hiring Platform",
-            desc: "Manage your complete hiring journey in one place."
+            sub: "Discover Exceptional Talent",
+            title: "Explore a World of Creativity & Skill",
+            desc: "From designers to developers, discover passionate talent ready to make an impact. Explore curated profiles tailored to your needs."
           },
           {
             bg: "/website/assets/HeroSectionImgs/Screen.jpg",
-            sub: "Screening Tools",
-            title: "Smart Screening for Candidates",
-            desc: "Use AI to filter top candidates instantly."
+            sub: "Connect Seamlessly",
+            title: "Where Opportunities Meet Ambition",
+            desc: "Engage directly with professionals and organizations through built-in collaboration tools and personalized recommendations."
           },
           {
             bg: "/website/assets/HeroSectionImgs/interview.jpg",
-            sub: "Interview Management",
-            title: "The Next Generation of Interviewing",
-            desc: "Plan, conduct, and analyze with AI-powered tools."
+            sub: "Showcase Your Brilliance",
+            title: "Let Your Work Speak for You",
+            desc: "Create an interactive profile that highlights your projects, achievements, and creative journey—all in one beautiful space."
           },
           {
             bg: "/website/assets/HeroSectionImgs/Scheduled.jpg",
-            sub: "Scheduling System",
-            title: "Automated Scheduling",
-            desc: "Save time with intelligent interview scheduling."
+            sub: "Collaborate & Create",
+            title: "Build Meaningful Partnerships",
+            desc: "Work on projects, share ideas, and collaborate with teams worldwide. TalentHub empowers collective growth through connection."
           },
           {
             bg: "/website/assets/HeroSectionImgs/Structure.jpg",
-            sub: "Structured Process",
-            title: "Data-Driven Structure",
-            desc: "Make hiring fair and consistent with structured flows."
+            sub: "Hire Smarter",
+            title: "Discover the Right Fit Instantly",
+            desc: "TalentHub's AI-driven matching helps organizations find top talent faster—ensuring skills, vision, and values align perfectly."
           },
           {
             bg: "/website/assets/HeroSectionImgs/intelligence.jpg",
-            sub: "AI Intelligence",
-            title: "Smarter Decisions",
-            desc: "Leverage AI insights for better hiring outcomes."
+            sub: "Grow Beyond Boundaries",
+            title: "Upskill, Network, and Succeed",
+            desc: "Join a thriving community that helps you learn, grow, and connect with mentors and opportunities that accelerate your journey."
           }
         ];
 
@@ -1234,31 +667,94 @@
 
         // If you want initial content synced (already is, but keep this to be safe)
         updateContent(0);
-      });
 
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      const contentBlocks = document.querySelectorAll(".content-block");
-      const featureImg = document.getElementById("feature-img");
-
-      contentBlocks.forEach((block) => {
-        ScrollTrigger.create({
-          trigger: block,
-          start: "top center",
-          onEnter: () => {
-            const img = block.getAttribute("data-img");
-            gsap.to(featureImg, {
-              opacity: 0,
-              duration: 0.5,
-              onComplete: () => {
-                featureImg.src = img;
-                gsap.to(featureImg, { opacity: 1, duration: 0.5 });
-              },
+        // Smooth scrolling functionality
+        function initSmoothScrolling() {
+          // Get all navigation links
+          const navLinks = document.querySelectorAll('.nav-link');
+          
+          // Add click event listeners to all navigation links
+          navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              // Get the target section ID from the href attribute
+              const targetId = this.getAttribute('href').substring(1);
+              const targetSection = document.getElementById(targetId);
+              
+              if (targetSection) {
+                // Calculate the position to scroll to
+                const offsetTop = targetSection.offsetTop - 80; // Adjust for header height
+                
+                // Use smooth scrolling
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                updateActiveNavLink(targetId);
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                  mobileMenu.classList.add('hidden');
+                }
+              }
             });
-          },
-        });
+          });
+          
+          // Update active nav link on scroll
+          window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.scroll-target');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+              const sectionTop = section.offsetTop - 100;
+              const sectionHeight = section.clientHeight;
+              
+              if (window.pageYOffset >= sectionTop && 
+                  window.pageYOffset < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+              }
+            });
+            
+            updateActiveNavLink(currentSection);
+          });
+        }
+        
+        // Function to update active navigation link
+        function updateActiveNavLink(activeId) {
+          const navLinks = document.querySelectorAll('.nav-link');
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${activeId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+        
+        // Initialize smooth scrolling
+        initSmoothScrolling();
       });
+
+      document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000, // 3 seconds per slide
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      effect: "slide", // or "slide", "coverflow", etc.
+      speed: 800,
+    });
+  });
+
     </script>
   </body>
 </html>
