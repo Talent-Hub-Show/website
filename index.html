@@ -216,7 +216,7 @@
           
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              10<span class="text-[#16A34A]">K+</span>
+              1<span class="text-[#16A34A]">K+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Talents <br> Connected
@@ -226,7 +226,7 @@
           
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              250<span class="text-[#16A34A]">+</span>
+              50<span class="text-[#16A34A]">+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Active <br> Collaborations
@@ -236,7 +236,7 @@
           <!-- 3 -->
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              85<span class="text-[#16A34A]">%</span>
+              90<span class="text-[#16A34A]">%</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Success  <br> Rate
@@ -246,7 +246,7 @@
         
           <div class="flex flex-col gap-2 sm:gap-3">
             <h2 class="text-[#0D0517] font-bold text-[44px] sm:text-[50px] lg:text-[60px] leading-none">
-              120<span class="text-[#16A34A]">+</span>
+              30<span class="text-[#16A34A]">+</span>
             </h2>
             <p class="font-medium text-[16px] sm:text-[18px] text-center">
               Partner <br> Organizations
@@ -255,34 +255,46 @@
         </div>
       </div>
     </section>
-    
+  
 
-    <!-- SHOWCASE SECTION -->
-    <section id="showcase" class="scroll-target w-full py-12 bg-[#F5FEF7] relative overflow-hidden">
-      <div class="w-[90%] sm:w-[85%] lg:w-[80%] mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 relative">
-        
-        <!-- Text Content -->
-        <div class="max-w-full md:max-w-[320px] lg:max-w-[440px] text-center md:text-left">
-          <h2 class="py-3 text-[26px] sm:text-[30px] lg:text-[36px] font-semibold text-[#161616] leading-snug">
-            How Talent Discovery <br class="hidden sm:block"> Without TalentHub's
+    <section class="w-full bg-[#F5FEF7] min-h-[60vh] lg:min-h-[80vh] relative flex flex-col lg:flex-row items-center justify-between overflow-hidden">
+      <!-- Left Content -->
+      <div class="relative w-full lg:w-[45%] h-auto lg:h-[80vh] flex items-center justify-center lg:justify-end px-6 py-10">
+        <div class="text-center lg:text-left max-w-md lg:max-w-[450px]">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#161616] mb-4">
+            See TalentHub in Action
           </h2>
-          <p class="py-4 text-gray-800 text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed">
-            Finding the right talent shouldn't feel like chasing shadows — yet, without a unified platform, opportunities are lost, and potential remains unseen.
+          <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+            Never make another bad hire with our AI-powered hiring assessments and real interview simulations.
           </p>
+          <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-semibold transition-all">
+            Start your free trial
+          </button>
         </div>
+      </div>
     
-        <!-- Image -->
-        <div class="w-full md:w-[100%] lg:w-[80%] flex justify-center md:justify-end">
-          <img 
-            src="/website/assets/Problems.webp" 
-            alt="Problems" 
-            class="w-[100%] sm:w-full md:w-full h-auto object-contain"
-          />
+      <!-- Right Video Section -->
+      <div class="relative w-full lg:w-[55%] h-[34vh] md:h-[40vh] lg:h-[80vh] flex justify-center items-center bg-[#0D0517]">
+
+        <!-- Background Image -->
+        <div 
+          class="absolute inset-0 bg-cover bg-center"
+          style="background-image: url('/website/assets/bAckd-1.jpg');">
         </div>
-    
+
+        <div class="relative z-10 w-[90%] md:w-[80%] lg:w-[75%] aspect-video overflow-hidden shadow-2xl rounded-lg">
+          <iframe
+            class="w-full h-full rounded-lg"
+            src="https://www.youtube.com/embed/zj4cDbWzDqA?autoplay=1&mute=1&loop=1&playlist=zj4cDbWzDqA&controls=1&modestbranding=1&rel=0"
+            title="TalentHub Video"
+            frameborder="0"
+            allow="autoplay; fullscreen; encrypted-media"
+            allowfullscreen>
+        </iframe>
+        </div>
       </div>
     </section>
-
+    
 
      <!-- Hiring & Job Search Section -->
      <section id="how" class="scroll-target relative bg-[#fdfefe] py-16 md:py-20">
@@ -533,8 +545,8 @@
         <div class="flex justify-center lg:justify-end items-center w-full lg:w-[15%]">
           <div class="flex gap-4">
             <img src="/website/assets/Icons/Quality Hiring/socialMedia/facebook.png" width="28" alt="facebook" class="hover:opacity-80 cursor-pointer transition-all duration-200">
-            <img src="/website/assets/Icons/Quality Hiring/socialMedia/linkedin.png" width="28" alt="linkedin" class="hover:opacity-80 cursor-pointer transition-all duration-200">
-            <img src="/website/assets/Icons/Quality Hiring/socialMedia/social.png" width="28" alt="social" class="hover:opacity-80 cursor-pointer transition-all duration-200">
+            <a href="https://www.linkedin.com/company/talent-hub-show/" title="TalentHub Linkdein"><img src="/website/assets/Icons/Quality Hiring/socialMedia/linkedin.png" width="28" alt="linkedin" class="hover:opacity-80 cursor-pointer transition-all duration-200"></a>
+            <a href="https://www.youtube.com/@TalentHubShow" title="TalentHub Youtube"><img src="/website/assets/Icons/Quality Hiring/socialMedia/social.png" width="28" alt="social" class="hover:opacity-80 cursor-pointer transition-all duration-200"></a>
           </div>
         </div>
       </div>
@@ -558,7 +570,7 @@
           {
             bg: "/website/assets/HeroSectionImgs/HeroImg.jpg",
             sub: "Discover Exceptional Talent",
-            title: "Explore a World of Creativity & Skill",
+            title: "Stand Out. Get Hired.",
             desc: "From designers to developers, discover passionate talent ready to make an impact. Explore curated profiles tailored to your needs."
           },
           {
