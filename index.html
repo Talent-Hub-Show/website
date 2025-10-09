@@ -150,53 +150,73 @@
     </header>
 
     <!-- HERO -->
-    <section id="heroSection" class="w-full p-4 md:py-6 grid md:grid-cols-2 gap-8 h-[80vh] md:min-h-[90vh] lg:min-h-[90vh] relative items-center" >
+    <section id="heroSection" class="w-full p-4 md:py-6 grid md:grid-cols-2 gap-8 h-[80vh] md:min-h-[90vh] lg:min-h-[90vh] relative items-center">
       <!-- Swiper background -->
       <div class="bg-swiper swiper">
-        <div class="swiper-wrapper">
-          <!-- Slides created dynamically -->
-        </div>
+        <div class="swiper-wrapper"></div>
       </div>
-
+    
       <!-- Card -->
       <article class="z-10 relative flex justify-center w-full">
-        <div class="bg-white rounded-xl md:p-4 px-2 sm:w-[90%] lg:w-[590px] md:w-[100%] min-h-[50vh] md:min-h-[50vh] sm:min-h-[70vh] flex flex-col justify-between shadow-lg" >
+        <div class="bg-white rounded-xl md:p-4 px-2 sm:w-[90%] lg:w-[590px] md:w-[100%] min-h-[50vh] flex flex-col justify-between shadow-lg">
           <!-- Tabs -->
-          <div class="bg-[#DFF3F7] rounded-md p-2 flex flex-wrap gap-2 items-center justify-center sm:justify-start" >
-            <button data-id="0" class="tab-btn bg-white rounded-md px-3 py-2 text-[13px] sm:text-[14px] text-black font-bold shadow" > Discover </button>
-            <button data-id="1" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Connect </button>
-            <button data-id="2" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Showcase </button>
-            <button data-id="3" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Collaborate </button>
-            <button data-id="4" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Hire </button>
-            <button data-id="5" class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold" > Grow </button>
+          <div class="bg-[#DFF3F7] rounded-md p-2 flex flex-wrap gap-2 items-center justify-center sm:justify-start">
+            <button class="tab-btn bg-white rounded-md px-3 py-2 text-[13px] sm:text-[14px] text-black font-bold shadow">Discover</button>
+            <button class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold">Connect</button>
+            <button class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold">Showcase</button>
+            <button class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold">Collaborate</button>
+            <button class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold">Hire</button>
+            <button class="tab-btn rounded-md px-3 py-2 text-[#471E7E] text-[13px] sm:text-[14px] font-bold">Grow</button>
           </div>
-
+    
           <!-- Content -->
           <div id="heroContent" class="py-6 text-center sm:text-left">
-            <h3 class="uppercase py-2 text-[16px] sm:text-[17px] lg:text-[20px] font-bold text-[#471E7E]" id="subTitle" >
+            <h3 class="uppercase py-2 text-[16px] sm:text-[17px] lg:text-[20px] font-bold text-[#471E7E]" id="subTitle">
               Interview Management System
             </h3>
-            <h1 class="text-[34px] sm:text-[48px] md:text-[40px] lg:text-[58px] py-4 font-bold text-black leading-tight" id="mainTitle" >
+            <h1 class="text-[34px] sm:text-[48px] md:text-[40px] lg:text-[58px] py-4 font-bold text-black leading-tight" id="mainTitle">
               The Next Generation of Interviewing
             </h1>
-            <p class="text-[15px] sm:text-[18px] text-gray-700 max-w-md mx-auto sm:mx-0" id="desc" >
+            <p class="text-[15px] sm:text-[18px] text-gray-700 max-w-md mx-auto sm:mx-0" id="desc">
               Plan, conduct, analyze, and optimize your interview process with
               AI-powered tools.
             </p>
           </div>
-
+    
           <!-- Buttons -->
-          <div class="flex flex-col sm:flex-row gap-3 pb-4 sm:gap-4 justify-center sm:justify-start m-0" >
+          <div class="flex flex-col sm:flex-row gap-3 pb-4 sm:gap-4 justify-center sm:justify-start">
             <button class="bg-green-600 px-6 py-3 rounded-lg font-semibold text-white hover:bg-green-700 transition-all duration-300 shadow-md w-full sm:w-auto">
               Request Demo <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <button class="bg-transparent border-2 border-black px-6 py-3 rounded-lg font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md w-full sm:w-auto" >
+            <button id="watchVideoBtn"
+              class="bg-transparent border-2 border-black px-6 py-3 rounded-lg font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md w-full sm:w-auto">
               <i class="fa-regular fa-circle-play"></i> Watch 2-Minute Video
             </button>
           </div>
         </div>
       </article>
     </section>
+    
+    <!-- ✅ Video Popup -->
+    <div id="videoPopup"
+    class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity duration-300">
+    <div class="relative w-[90%] md:w-[60%] lg:w-[50%] bg-white rounded-xl overflow-hidden shadow-xl">
+      <!-- Close button -->
+      <button id="closePopup" class="absolute top-2 right-2 text-black text-2xl font-bold hover:text-gray-700">
+        &times;
+      </button>
+
+      <!-- YouTube iframe -->
+      <div class="aspect-video w-full">
+        <iframe id="youtubeVideo" class="w-full h-full rounded-xl" 
+          src=""
+          frameborder="0"
+          allow="autoplay; encrypted-media; fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+    </div>
 
     <!-- FEATURES SECTION -->
     <section id="features" class="scroll-target py-12 w-full bg-[#F8F8F8]">
@@ -764,6 +784,31 @@
       speed: 800,
     });
   });
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const videoBtn = document.getElementById('watchVideoBtn');
+        const popup = document.getElementById('videoPopup');
+        const closeBtn = document.getElementById('closePopup');
+        const youtubeFrame = document.getElementById('youtubeVideo');
+
+        // Replace with your actual YouTube video ID
+        const videoId = 'dQw4w9WgXcQ';
+
+        videoBtn.addEventListener('click', () => {
+          popup.classList.remove('hidden');
+          youtubeFrame.src = `https://www.youtube.com/embed/_haMKb0rIdI?autoplay=1&mute=1&rel=0`;
+        });
+
+        closeBtn.addEventListener('click', closeVideo);
+        popup.addEventListener('click', (e) => {
+          if (e.target === popup) closeVideo();
+        });
+
+        function closeVideo() {
+          popup.classList.add('hidden');
+          youtubeFrame.src = '';
+        }
+      });
 
     </script>
   </body>
